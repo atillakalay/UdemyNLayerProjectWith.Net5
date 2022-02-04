@@ -11,7 +11,7 @@ namespace UdemyNLayerProject.Data.Repositories
         {
             get => _context as AppDbContext;
         }
-        public ProductRepository(DbContext context) : base(context)
+        public ProductRepository(AppDbContext context) : base(context)
         {
         }
 
