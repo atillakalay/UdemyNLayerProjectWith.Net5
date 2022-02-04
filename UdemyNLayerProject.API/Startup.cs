@@ -5,9 +5,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using UdemyNLayerProject.Core.Repositories;
+using UdemyNLayerProject.Core.Services;
 using UdemyNLayerProject.Core.UnitOfWorks;
 using UdemyNLayerProject.Data;
 using UdemyNLayerProject.Data.UnitOfWorks;
+using UdemyNLayerProject.Service.Services;
 
 namespace UdemyNLayerProject.API
 {
@@ -23,14 +26,22 @@ namespace UdemyNLayerProject.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
+
+            services.AddScoped<IProductRepository, IProductRepository>();
+            services.AddScoped<ICategoryRepository, ICategoryRepository>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(IRepository<>));
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
+
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(), o => o.MigrationsAssembly("UdemyNLayerProject.Data"));
             });
-
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
