@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using UdemyNLayerProject.Core.Services;
 
 namespace UdemyNLayerProject.WEB.Controllers
