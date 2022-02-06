@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UdemyNLayerProject.API.Data\UdemyNLayerProject.Data.csproj" />
     <ProjectReference Include="..\UdemyNLayerProject.Service\UdemyNLayerProject.Service.csproj" />
   </ItemGroup>
 

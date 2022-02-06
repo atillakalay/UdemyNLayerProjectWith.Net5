@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\UdemyNLayerProject.API.Data\UdemyNLayerProject.Data.csproj" />
     <ProjectReference Include="..\UdemyNLayerProjectCore\UdemyNLayerProject.Core.csproj" />
   </ItemGroup>
 

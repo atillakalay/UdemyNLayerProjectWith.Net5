@@ -1,5 +1,3 @@
-using System;
-
 namespace UdemyNLayerProject.WEB.Models
 {
     public class ErrorViewModel
