@@ -1,30 +1,31 @@
 ﻿@model IEnumerable<CategoryDto>
 @{
-	ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h1>Kategoriler</h1>
 <a class="btn btn-primary" asp-action="Save">Kategori Ekle</a>
 <table class="table table-hover mb-3">
 	<thead>
-		<tr>
-			<th>Id</th>
-			<th>Name</th>
-			<th>İşlemler</th>
-		</tr>
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>İşlemler</th>
+	</tr>
 	</thead>
 	<tbody>
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>@item.Id</td>
-				<td>@item.Name</td>
-				<td>
-					<a class="btn btn-warning" asp-action="Update" asp-route-id="@item.Id">Güncelle</a>
-					<a class="btn btn-danger" asp-action="Remove" asp-route-id="@item.Id">Sil</a>
-				</td>
-			</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.Id</td>
+			<td>@item.Name</td>
+			<td>
+				<a class="btn btn-warning" asp-action="Update" asp-route-id="@item.Id">Güncelle</a>
+				<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+			</td>
+		</tr>
 
-		}
+	}
 	</tbody>
 </table>
+

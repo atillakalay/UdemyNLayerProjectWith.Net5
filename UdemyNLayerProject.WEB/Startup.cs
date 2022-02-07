@@ -11,6 +11,7 @@ using UdemyNLayerProject.Data;
 using UdemyNLayerProject.Data.Repositories;
 using UdemyNLayerProject.Data.UnitOfWorks;
 using UdemyNLayerProject.Service.Services;
+using UdemyNLayerProject.WEB.Filters;
 
 namespace UdemyNLayerProject.WEB
 {
@@ -26,10 +27,14 @@ namespace UdemyNLayerProject.WEB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
             services.AddAutoMapper(typeof(Startup));
             services.AddControllersWithViews();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<NotFoundFilter>();
 
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
@@ -69,7 +74,7 @@ namespace UdemyNLayerProject.WEB
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Categories}/{action=Index}/{id?}");
             });
         }
     }

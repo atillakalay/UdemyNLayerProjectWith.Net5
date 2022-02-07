@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
-using UdemyNLayerProject.WEB.Models;
+using UdemyNLayerProject.WEB.DTOs;
 
 namespace UdemyNLayerProject.WEB.Controllers
 {
@@ -25,9 +24,9 @@ namespace UdemyNLayerProject.WEB.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(ErrorDto errorDto)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(errorDto);
         }
     }
 }
